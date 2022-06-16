@@ -1,16 +1,11 @@
 #!/usr/bin/env python3
 
-import re
-import time
 import subprocess as sp
 import tkinter as tk 
 from signal import pause
-from pynput.keyboard import Listener, Key
+from pynput.keyboard import Listener
 import asyncio
 
-STAT = False
-
-#PATTERN = re.compile(r".*italian.*")
 COMMAND = "mplayer -fs ./data/SampleVideo_1280x720_1mb_italian.mp4 &"
 
 key = 'q'    
