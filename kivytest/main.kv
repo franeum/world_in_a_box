@@ -1,0 +1,39 @@
+#:kivy 2.1.0
+
+<MainWindow>:
+    BoxLayout:
+        id: main_box
+        orientation: "vertical"
+        BoxLayout:
+            id: title
+            size_hint: 1, 0.2
+            Label:
+                id: title_label
+                text: "Configurator"
+        BoxLayout:
+            id: pushes
+            size_hint: 1, 0.6
+            orientation: "vertical"
+            BoxLayout:
+                id: push1
+                orientation: "horizontal"
+                BoxLayout:
+                    Label:
+                        text: "key"
+                BoxLayout:
+                    Label:
+                        text: "value"
+            BoxLayout:
+                id: push2
+                orientation: "horizontal"
+                BoxLayout:
+                    Label:
+                        text: "key"
+                BoxLayout:
+                    Label:
+                        text: "value"
+        BoxLayout:
+            id: submit
+            size_hint: 0.5, 0.2
+            Button:
+                text: "Save & Run"
