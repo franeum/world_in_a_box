@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 
 import sys
-import time
-import tkinter as tk 
-import RPi.GPIO as GPIO
 import signal
-#from mplayer import Player
+import tkinter as tk
+import RPi.GPIO as GPIO
 from mpv import MPV
 from gpiozero import Button
 
@@ -23,7 +21,6 @@ PUSH3PRESSED = Button(PUSH3, hold_time=1)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PUSH1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(PUSH2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-#GPIO.setup(PUSH3, GPIO.IN) 
 
 class Video():
     def __init__(self):
@@ -56,10 +53,10 @@ def runvideo(push):
     VIDEO.play()
 
 def draw_bg():
-  root = tk.Tk() 
-  root.configure(bg='black', cursor='none')
-  root.attributes('-fullscreen', True)
-  root.update()
+    root = tk.Tk()
+    root.configure(bg='black', cursor='none')
+    root.attributes('-fullscreen', True)
+    root.update()
 
 def togglevideo(push):
     VIDEO.toggle_pause()
