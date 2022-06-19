@@ -67,6 +67,9 @@ def draw_bg():
   root.attributes('-fullscreen', True)
   root.update()
 
+def togglevideo():
+    print("NOT_YER_IMPLEMENTED")
+
 if __name__ == '__main__':
   GPIO.add_event_detect(PUSH1, GPIO.RISING, 
               callback=runvideo, bouncetime=400)
