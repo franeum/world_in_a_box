@@ -50,9 +50,10 @@ def runvideo(push):
     #p = Player()
     #p.loadfile(lang)
     p = Video(lang)
+    p.play()
 
   
-    
+"""
 async def run(cmd):
     proc = await asyncio.create_subprocess_shell(
         cmd,
@@ -62,7 +63,8 @@ async def run(cmd):
     await proc.communicate()
 
     print(f'[{cmd!r} exited with {proc.returncode}]')
-    
+"""
+
 def draw_bg():
   root = tk.Tk() 
   root.configure(bg='black', cursor='none')
