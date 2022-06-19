@@ -26,7 +26,7 @@ GPIO.setup(PUSH2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(PUSH3, GPIO.IN) 
 
 class Video():
-    def __init__(self, path):
+    def __init__(self):
         self.video = MPV(ytdl=True)
         self.is_playing = False
 
