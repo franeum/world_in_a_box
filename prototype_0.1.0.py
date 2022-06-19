@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
 import sys
-import asyncio
-#import subprocess as sp
+import time
 import tkinter as tk 
 import RPi.GPIO as GPIO
 import signal
 #from mplayer import Player
 from mpv import MPV
+from gpiozero import Button
 
 # GLOBAL LABELS
 
@@ -18,6 +18,7 @@ LANGS = [ITALIAN, ENGLISH]
 PUSH1 = 23
 PUSH2 = 24
 PUSH3 = 2
+PUSH3PRESSED = Button(PUSH3)
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PUSH1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -67,17 +68,23 @@ def togglevideo(push):
     VIDEO.toggle_pause()
 
 
-if __name__ == '__main__':
-  GPIO.add_event_detect(PUSH1, GPIO.RISING, 
-              callback=runvideo, bouncetime=400)
-              
-  GPIO.add_event_detect(PUSH2, GPIO.RISING, 
-              callback=runvideo, bouncetime=400)
+def app_exit(push):
+    sys.exit(0)
 
-  GPIO.add_event_detect(PUSH3, GPIO.RISING, 
-              callback=togglevideo, bouncetime=400)
-              
-  draw_bg()
-  
-  signal.signal(signal.SIGINT, signal_handler)
-  signal.pause()
+
+if __name__ == '__main__':
+    GPIO.add_event_detect(PUSH1, GPIO.RISING, 
+                callback=runvideo, bouncetime=400)
+                
+    GPIO.add_event_detect(PUSH2, GPIO.RISING, 
+                callback=runvideo, bouncetime=400)
+
+    GPIO.add_event_detect(PUSH3, GPIO.RISING, 
+                callback=togglevideo, bouncetime=400)
+                
+    draw_bg()
+    
+    PUSH3PRESSED.when_held = app_exit
+
+    signal.signal(signal.SIGINT, signal_handler)
+    signal.pause()

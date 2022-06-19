@@ -52,8 +52,7 @@ def kill_proc(pid):
 def run_proc(program):
 	asyncio.run(run(f'{MAINPATH}/{program} > /dev/null 2>&1 &'))
 		
-while True:
-	but.when_held = toggle
-	time.sleep(0.25)
+
+but.when_held = toggle
 
 pause()
