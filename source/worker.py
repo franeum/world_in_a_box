@@ -19,11 +19,6 @@ PUSH1 = 23
 PUSH2 = 24
 PUSH3 = 2
 PUSH3PRESSED = Button(PUSH3, hold_time=1)
-
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(PUSH1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(PUSH2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-
 VIDEO = Video()
 
 def signal_handler(sig, frame):
@@ -58,6 +53,10 @@ def app_exit(push):
 
 
 if __name__ == '__main__':
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(PUSH1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.setup(PUSH2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
     GPIO.add_event_detect(PUSH1, GPIO.RISING, 
                 callback=runvideo, bouncetime=400)
                 
