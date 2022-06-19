@@ -6,15 +6,22 @@ from signal import pause
 from pynput.keyboard import Listener
 import asyncio
 
-COMMAND = "mplayer -fs ./data/SampleVideo_1280x720_1mb_italian.mp4 &"
+ITALIAN = "./data/video_italian.mp4"
+ENGLISH = "./data/video_english.mp4"
+LANGS = [ITALIAN, ENGLISH]
+
+COMMAND = "mplayer -fs {} &"
+
+def choose_video(index):
+    return COMMAND.format(LANGS[index])
 
 key = 'q'    
 
 def on_press(key):
     if getattr(key, "char", None) == 'q':
-        print("press Q")
-        #sp.run(COMMAND.split(' '))
-        asyncio.run(run(COMMAND))
+        asyncio.run(run(choose_video(0)))
+    elif getattr(key, "char", None) == 'w':
+        asyncio.run(run(choose_video(1)))
     else:
         print(key)
 
