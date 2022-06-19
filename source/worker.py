@@ -11,7 +11,7 @@ from wab_video import Video
 
 # GLOBAL LABELS
 
-MAINPATH = Path('.').resolve()
+MAINPATH = Path(__file__).parent.absolute()
 VIDEO_DIR = (MAINPATH / '../data').resolve()
 PATTERN = re.compile(r'^[12]_')
 VIDEOS = [x for x in VIDEO_DIR.iterdir() if re.match(PATTERN, x.stem)]
