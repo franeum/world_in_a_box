@@ -1,18 +1,22 @@
 #!/usr/bin/env python3
 
+import re
 import sys
 import signal
 import tkinter as tk
 import RPi.GPIO as GPIO
+from pathlib import Path
 from mpv import MPV
 from gpiozero import Button
 
 # GLOBAL LABELS
 
-MAINPATH = "/home/neum/Documenti/world_in_a_box"
-ITALIAN = f"{MAINPATH}/data/video_italian.mp4"
-ENGLISH = f"{MAINPATH}/data/video_english.mp4"
-LANGS = [ITALIAN, ENGLISH]
+MAINPATH = Path('.').resolve()
+VIDEO_DIR = (MAINPATH / '../data').resolve()
+PATTERN = re.compile(r'^{12}_')
+
+VIDEOS = [x for x in VIDEO_DIR.iterdir() if re.match(PATTERN, x.stem)]
+
 PUSH1 = 23
 PUSH2 = 24
 PUSH3 = 2
@@ -43,8 +47,8 @@ def signal_handler(sig, frame):
 
 
 def runvideo(push):
-    index = 0 if push == 23 else 1
-    lang = LANGS[index]
+    # 0 if push == 23, otherwise 1 (for push 24)
+    lang = VIDEOS[push - PUSH1]
 
     for push in [PUSH1, PUSH2]:
         GPIO.remove_event_detect(push)
