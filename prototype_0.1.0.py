@@ -18,12 +18,12 @@ LANGS = [ITALIAN, ENGLISH]
 PUSH1 = 23
 PUSH2 = 24
 PUSH3 = 2
-PUSH3PRESSED = Button(PUSH3)
+PUSH3PRESSED = Button(PUSH3, hold_time=1)
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PUSH1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(PUSH2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(PUSH3, GPIO.IN) 
+#GPIO.setup(PUSH3, GPIO.IN) 
 
 class Video():
     def __init__(self):
@@ -79,8 +79,8 @@ if __name__ == '__main__':
     GPIO.add_event_detect(PUSH2, GPIO.RISING, 
                 callback=runvideo, bouncetime=400)
 
-    GPIO.add_event_detect(PUSH3, GPIO.RISING, 
-                callback=togglevideo, bouncetime=400)
+    #GPIO.add_event_detect(PUSH3, GPIO.RISING, 
+                #callback=togglevideo, bouncetime=400)
                 
     draw_bg()
     
