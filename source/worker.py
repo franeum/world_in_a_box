@@ -14,7 +14,7 @@ from wab_video import Video
 
 MAINPATH = Path('.').resolve()
 VIDEO_DIR = (MAINPATH / '../data').resolve()
-PATTERN = re.compile(r'^{12}_')
+PATTERN = re.compile(r'^[12]_')
 
 VIDEOS = [x for x in VIDEO_DIR.iterdir() if re.match(PATTERN, x.stem)]
 
