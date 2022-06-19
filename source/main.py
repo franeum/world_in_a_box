@@ -12,6 +12,8 @@ MAINPATH = Path('.').resolve()
 COMMAND = 'ps aux'
 PROGRAM = 'worker.py'
 
+print(MAINPATH)
+
 def toggle():
 	print("BRAVO, 1 SECONDO")
 	pid = get_pid(PROGRAM)
