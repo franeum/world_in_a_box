@@ -6,13 +6,11 @@ from pathlib import Path
 from gpiozero import Button
 from signal import pause
 
-but = Button(2, hold_time=1)
+BUTTON = Button(2, hold_time=1)
 
-MAINPATH = '.'
+MAINPATH = Path('.').resolve()
 COMMAND = 'ps aux'
 PROGRAM = 'worker.py'
-
-mainpath = Path(MAINPATH).resolve()
 
 def toggle():
 	print("BRAVO, 1 SECONDO")
@@ -52,8 +50,9 @@ def kill_proc(pid):
 	asyncio.run(run(f'kill -9 {pid}'))
 		
 def run_proc(program):
-	asyncio.run(run(f'{mainpath}/{program} > /dev/null 2>&1 &'))
+	asyncio.run(run(f'{MAINPATH}/{program} > /dev/null 2>&1 &'))
 		
 
-but.when_held = toggle
+BUTTON.when_held = toggle
+run_proc(PROGRAM)
 pause()
