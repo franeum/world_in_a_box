@@ -15,7 +15,7 @@ PROGRAM = 'prototype_0.1.0.py'
 def toggle():
 	print("BRAVO, 1 SECONDO")
 	pid = get_pid(PROGRAM)
-	
+
 	if pid:
 		kill_proc(pid)
 	else:
@@ -52,7 +52,8 @@ def kill_proc(pid):
 def run_proc(program):
 	asyncio.run(run(f'{MAINPATH}/{program} > /dev/null 2>&1 &'))
 		
-	
-but.when_held = toggle
+while True:
+	but.when_held = toggle
+	time.sleep(0.25)
 
 pause()
