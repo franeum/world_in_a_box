@@ -9,6 +9,7 @@ class Video():
         self.path = str(path)
 
     def play(self):
+        self.video.pause = False
         self.video.play(self.path)
 
     def toggle_pause(self):
