@@ -6,7 +6,8 @@ import asyncio
 import tkinter as tk 
 import RPi.GPIO as GPIO
 import signal
-from mplayer import Player
+#from mplayer import Player
+from mpv import MPV
 
 # GLOBAL LABELS
 
@@ -25,16 +26,16 @@ GPIO.setup(PUSH2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(PUSH3, GPIO.IN)
 
 
-class Video:
+class Video():
     def __init__(self, path):
-        self.video = Player()
+        self.video = MPV(ytdl=True)
         self.path = path
 
     def path(self, path):
         self.path = path
 
-    def run(self):
-        self.video.loadfile(self.path)
+    def play(self):
+        self.video.play(self.path)
 
 
 def signal_handler(sig, frame):
@@ -46,8 +47,9 @@ def runvideo(push):
     index = 0 if push == 23 else 1
     lang = LANGS[index]
     #asyncio.run(run(COMMAND.format(lang)))
-    p = Player()
-    p.loadfile(lang)
+    #p = Player()
+    #p.loadfile(lang)
+    p = Video(lang)
 
   
     
