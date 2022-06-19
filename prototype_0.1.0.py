@@ -27,7 +27,7 @@ GPIO.setup(PUSH3, GPIO.IN)
 
 class Video():
     def __init__(self):
-        self.video = MPV(ytdl=True)
+        self.video = MPV()
         self.is_playing = False
 
     def set_path(self, path):
@@ -39,11 +39,13 @@ class Video():
 
     def pause(self):
         self.is_playing = False
-        self.video.set_property("pause", True)
+        #self.video.set_property("pause", True)
+        self.video.pause = True
 
     def resume(self):
         self.is_playing = True
-        self.video.set_property("pause", False)
+        #self.video.set_property("pause", False)
+        self.video.pause = False
 
 VIDEO = Video()
 
