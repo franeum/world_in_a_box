@@ -10,6 +10,7 @@ class Video():
 
     def play(self):
         self.video.pause = False
+        self.video.fullscreen = True
         self.video.play(self.path)
 
     def toggle_pause(self):
