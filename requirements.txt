@@ -1,0 +1,4 @@
+colorzero==2.0
+gpiozero==1.6.2
+python-mpv==0.5.2
+RPi.GPIO==0.7.1
