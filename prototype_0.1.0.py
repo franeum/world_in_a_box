@@ -64,7 +64,7 @@ def draw_bg():
   root.attributes('-fullscreen', True)
   root.update()
 
-def togglevideo():
+def togglevideo(push):
     if VIDEO.is_playing:
         VIDEO.pause()
     else:
