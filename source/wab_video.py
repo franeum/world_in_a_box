@@ -1,3 +1,4 @@
+import pathlib
 from mpv import MPV
 
 class Video():
@@ -5,7 +6,7 @@ class Video():
         self.video = MPV()
 
     def set_path(self, path):
-        self.path = path
+        self.path = str(path)
 
     def play(self):
         self.video.play(self.path)
