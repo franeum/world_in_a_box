@@ -1,3 +1,5 @@
+from mpv import MPV
+
 class Video():
     def __init__(self):
         self.video = MPV()

@@ -6,7 +6,6 @@ import signal
 import tkinter as tk
 import RPi.GPIO as GPIO
 from pathlib import Path
-from mpv import MPV
 from gpiozero import Button
 from wab_video import Video
 
@@ -15,9 +14,7 @@ from wab_video import Video
 MAINPATH = Path('.').resolve()
 VIDEO_DIR = (MAINPATH / '../data').resolve()
 PATTERN = re.compile(r'^[12]_')
-
 VIDEOS = [x for x in VIDEO_DIR.iterdir() if re.match(PATTERN, x.stem)]
-
 PUSH1 = 23
 PUSH2 = 24
 PUSH3 = 2
@@ -44,11 +41,13 @@ def runvideo(push):
     VIDEO.set_path(lang)
     VIDEO.play()
 
+
 def draw_bg():
     root = tk.Tk()
     root.configure(bg='black', cursor='none')
     root.attributes('-fullscreen', True)
     root.update()
+
 
 def togglevideo(push):
     VIDEO.toggle_pause()
@@ -64,9 +63,6 @@ if __name__ == '__main__':
                 
     GPIO.add_event_detect(PUSH2, GPIO.RISING, 
                 callback=runvideo, bouncetime=400)
-
-    #GPIO.add_event_detect(PUSH3, GPIO.RISING, 
-                #callback=togglevideo, bouncetime=400)
                 
     draw_bg()
     
