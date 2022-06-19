@@ -6,6 +6,7 @@ import asyncio
 import tkinter as tk 
 import RPi.GPIO as GPIO
 import signal
+from mplayer import Player
 
 # GLOBAL LABELS
 
@@ -13,15 +14,27 @@ MAINPATH = "/home/neum/Documenti/world_in_a_box"
 ITALIAN = f"{MAINPATH}/data/video_italian.mp4"
 ENGLISH = f"{MAINPATH}/data/video_english.mp4"
 LANGS = [ITALIAN, ENGLISH]
-COMMAND = "pkill mplayer; mplayer -fs -ao alsa {} > /dev/null 2>&1 &"
+#COMMAND = "pkill mplayer; mplayer -fs -ao alsa {} > /dev/null 2>&1 &" 
 PUSH1 = 23
 PUSH2 = 24
-#PUSH3 = 2
+PUSH3 = 2
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PUSH1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(PUSH2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-#GPIO.setup(PUSH3, GPIO.IN)
+GPIO.setup(PUSH3, GPIO.IN)
+
+
+class Video:
+    def __init__(self, path):
+        self.video = Player()
+        self.path = path
+
+    def path(self, path):
+        self.path = path
+
+    def run(self):
+        self.video.loadfile(self.path)
 
 
 def signal_handler(sig, frame):
@@ -30,9 +43,12 @@ def signal_handler(sig, frame):
 
 
 def runvideo(push):
-  index = 0 if push == 23 else 1
-  lang = LANGS[index]
-  asyncio.run(run(COMMAND.format(lang)))
+    index = 0 if push == 23 else 1
+    lang = LANGS[index]
+    #asyncio.run(run(COMMAND.format(lang)))
+    p = Player()
+    p.loadfile(lang)
+
   
     
 async def run(cmd):
@@ -57,6 +73,9 @@ if __name__ == '__main__':
               
   GPIO.add_event_detect(PUSH2, GPIO.RISING, 
               callback=runvideo, bouncetime=400)
+
+  GPIO.add_event_detect(PUSH3, GPIO.RISING, 
+              callback=togglevideo, bouncetime=400)
               
   draw_bg()
   
