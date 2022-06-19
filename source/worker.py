@@ -29,6 +29,7 @@ def signal_handler(sig, frame):
 def runvideo(push):
     # 0 if push == 23, otherwise 1 (for push 24)
     lang = VIDEOS[push - PUSH1]
+    GPIO.setmode(GPIO.BCM)
 
     for push in [PUSH1, PUSH2]:
         GPIO.remove_event_detect(push)
