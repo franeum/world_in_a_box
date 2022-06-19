@@ -8,6 +8,7 @@ import RPi.GPIO as GPIO
 from pathlib import Path
 from mpv import MPV
 from gpiozero import Button
+from wab_video import Video
 
 # GLOBAL LABELS
 
@@ -25,19 +26,6 @@ PUSH3PRESSED = Button(PUSH3, hold_time=1)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PUSH1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(PUSH2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-
-class Video():
-    def __init__(self):
-        self.video = MPV()
-
-    def set_path(self, path):
-        self.path = path
-
-    def play(self):
-        self.video.play(self.path)
-
-    def toggle_pause(self):
-        self.video.pause = not self.video.pause
 
 VIDEO = Video()
 
