@@ -10,7 +10,7 @@ but = Button(2, hold_time=1)
 
 MAINPATH = '.'
 COMMAND = 'ps aux'
-PROGRAM = '__main__.py'
+PROGRAM = 'worker.py'
 
 mainpath = Path(MAINPATH).resolve()
 
