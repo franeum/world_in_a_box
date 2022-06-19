@@ -11,7 +11,7 @@ def say_goodbye():
 
 button = Button(2)
 
-button.when_pressed = say_hello
+#button.when_pressed = say_hello
 button.when_released = say_goodbye
 
 pause()
