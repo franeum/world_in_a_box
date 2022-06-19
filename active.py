@@ -14,9 +14,6 @@ PROGRAM = 'prototype_0.1.0.py'
 
 def toggle():
 	print("BRAVO, 1 SECONDO")
-	
-	with open(f'{MAINPATH}/testfile.txt','a+') as file:
-		file.write("\nSTOKAZZO")
 		
 	pid = get_pid(PROGRAM)
 	if pid:
@@ -50,7 +47,7 @@ async def run(cmd):
     print(f'[{cmd!r} exited with {proc.returncode}]')
     
 def kill_proc(pid):
-	asyncio.run(run(f'pkill mplayer; kill -9 {pid}'))
+	asyncio.run(run(f'kill -9 {pid}'))
 		
 def run_proc(program):
 	asyncio.run(run(f'{MAINPATH}/{program} > /dev/null 2>&1 &'))

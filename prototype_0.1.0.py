@@ -37,15 +37,6 @@ class Video():
         self.is_playing = True
         self.video.play(self.path)
 
-    """
-    def pause(self):
-        self.is_playing = False
-        self.video.pause = True
-
-    def resume(self):
-        self.is_playing = True
-        self.video.pause = False
-    """
     def toggle_pause(self):
         self.is_playing = not self.is_playing
         self.video.pause = not self.video.pause
