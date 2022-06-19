@@ -14,8 +14,8 @@ PROGRAM = 'prototype_0.1.0.py'
 
 def toggle():
 	print("BRAVO, 1 SECONDO")
-		
 	pid = get_pid(PROGRAM)
+	
 	if pid:
 		kill_proc(pid)
 	else:

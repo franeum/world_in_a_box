@@ -15,7 +15,6 @@ MAINPATH = "/home/neum/Documenti/world_in_a_box"
 ITALIAN = f"{MAINPATH}/data/video_italian.mp4"
 ENGLISH = f"{MAINPATH}/data/video_english.mp4"
 LANGS = [ITALIAN, ENGLISH]
-#COMMAND = "pkill mplayer; mplayer -fs -ao alsa {} > /dev/null 2>&1 &" 
 PUSH1 = 23
 PUSH2 = 24
 PUSH3 = 2
@@ -28,23 +27,23 @@ GPIO.setup(PUSH3, GPIO.IN)
 class Video():
     def __init__(self):
         self.video = MPV()
-        self.is_playing = False
+        #self.is_playing = False
 
     def set_path(self, path):
         self.path = path
 
     def play(self):
-        self.is_playing = True
+        #self.is_playing = True
         self.video.play(self.path)
 
     def toggle_pause(self):
-        self.is_playing = not self.is_playing
+        #self.is_playing = not self.is_playing
         self.video.pause = not self.video.pause
 
 VIDEO = Video()
 
 def signal_handler(sig, frame):
-    #GPIO.cleanup()
+    GPIO.cleanup()
     sys.exit(0)
 
 
