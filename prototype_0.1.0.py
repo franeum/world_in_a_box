@@ -28,17 +28,14 @@ GPIO.setup(PUSH2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 class Video():
     def __init__(self):
         self.video = MPV()
-        #self.is_playing = False
 
     def set_path(self, path):
         self.path = path
 
     def play(self):
-        #self.is_playing = True
         self.video.play(self.path)
 
     def toggle_pause(self):
-        #self.is_playing = not self.is_playing
         self.video.pause = not self.video.pause
 
 VIDEO = Video()
