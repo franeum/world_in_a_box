@@ -44,15 +44,14 @@ async def run(cmd):
 
     await proc.communicate()
 
-    print(f'[{cmd!r} exited with {proc.returncode}]')
+    print(f"[{cmd!r} exited with {proc.returncode}]")
     
 def kill_proc(pid):
-	asyncio.run(run(f'kill -9 {pid}'))
+	asyncio.run(run(f"kill -9 {pid}"))
 		
 def run_proc(program):
-	asyncio.run(run(f'{MAINPATH}/{program} > /dev/null 2>&1 &'))
+	asyncio.run(run(f"{MAINPATH}/{program} > /dev/null 2>&1 &"))
 		
 
 BUTTON.when_held = toggle
-run_proc(PROGRAM)
 pause()
