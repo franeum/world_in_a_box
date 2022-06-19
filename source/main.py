@@ -8,7 +8,7 @@ from signal import pause
 
 BUTTON = Button(2, hold_time=1)
 
-MAINPATH = Path('.').resolve()
+MAINPATH = Path(__file__).parent.absolute()
 COMMAND = 'ps aux'
 PROGRAM = 'worker.py'
 
