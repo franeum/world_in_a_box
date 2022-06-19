@@ -60,6 +60,10 @@ def signal_handler(sig, frame):
 def runvideo(push):
     index = 0 if push == 23 else 1
     lang = LANGS[index]
+
+    for push in [PUSH1, PUSH2]:
+        GPIO.remove_event_detect(push)
+    
     VIDEO.set_path(lang)
     VIDEO.play()
 
