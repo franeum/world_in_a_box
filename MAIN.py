@@ -23,8 +23,9 @@ class Background:
         self.win.update()
 
     def destroy(self):
-        self.active = False
-        self.win.destroy()
+        if self.active:
+            self.active = False
+            self.win.destroy()
 
 WINDOW = Background()
 
