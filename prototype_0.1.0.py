@@ -30,7 +30,7 @@ class Video():
         self.video = MPV(ytdl=True)
         self.is_playing = False
 
-    def path(self, path):
+    def set_path(self, path):
         self.path = path
 
     def play(self):
@@ -55,7 +55,7 @@ def signal_handler(sig, frame):
 def runvideo(push):
     index = 0 if push == 23 else 1
     lang = LANGS[index]
-    VIDEO.path(lang)
+    VIDEO.set_path(lang)
     VIDEO.play()
 
 def draw_bg():
