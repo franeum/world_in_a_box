@@ -37,15 +37,18 @@ class Video():
         self.is_playing = True
         self.video.play(self.path)
 
+    """
     def pause(self):
         self.is_playing = False
-        #self.video.set_property("pause", True)
         self.video.pause = True
 
     def resume(self):
         self.is_playing = True
-        #self.video.set_property("pause", False)
         self.video.pause = False
+    """
+    def toggle_pause(self):
+        self.is_playing = not self.is_playing
+        self.video.pause = not self.video.pause
 
 VIDEO = Video()
 
@@ -67,10 +70,7 @@ def draw_bg():
   root.update()
 
 def togglevideo(push):
-    if VIDEO.is_playing:
-        VIDEO.pause()
-    else:
-        VIDEO.resume()
+    VIDEO.toggle_pause()
 
 
 if __name__ == '__main__':
