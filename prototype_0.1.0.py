@@ -23,20 +23,29 @@ PUSH3 = 2
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PUSH1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(PUSH2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(PUSH3, GPIO.IN)
-
+GPIO.setup(PUSH3, GPIO.IN) 
 
 class Video():
     def __init__(self, path):
         self.video = MPV(ytdl=True)
-        self.path = path
+        self.is_playing = False
 
     def path(self, path):
         self.path = path
 
     def play(self):
+        self.is_playing = True
         self.video.play(self.path)
 
+    def pause(self):
+        self.is_playing = False
+        self.video.set_property("pause", True)
+
+    def resume(self):
+        self.is_playing = True
+        self.video.set_property("pause", False)
+
+VIDEO = Video()
 
 def signal_handler(sig, frame):
     #GPIO.cleanup()
@@ -46,24 +55,8 @@ def signal_handler(sig, frame):
 def runvideo(push):
     index = 0 if push == 23 else 1
     lang = LANGS[index]
-    #asyncio.run(run(COMMAND.format(lang)))
-    #p = Player()
-    #p.loadfile(lang)
-    p = Video(lang)
-    p.play()
-
-  
-"""
-async def run(cmd):
-    proc = await asyncio.create_subprocess_shell(
-        cmd,
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE)
-
-    await proc.communicate()
-
-    print(f'[{cmd!r} exited with {proc.returncode}]')
-"""
+    VIDEO.path(lang)
+    VIDEO.play()
 
 def draw_bg():
   root = tk.Tk() 
@@ -72,7 +65,11 @@ def draw_bg():
   root.update()
 
 def togglevideo():
-    print("NOT_YER_IMPLEMENTED")
+    if VIDEO.is_playing:
+        VIDEO.pause()
+    else:
+        VIDEO.resume()
+
 
 if __name__ == '__main__':
   GPIO.add_event_detect(PUSH1, GPIO.RISING, 
