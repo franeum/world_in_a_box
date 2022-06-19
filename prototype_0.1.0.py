@@ -84,6 +84,7 @@ if __name__ == '__main__':
                 
     draw_bg()
     
+    PUSH3PRESSED.when_released = togglevideo
     PUSH3PRESSED.when_held = app_exit
 
     signal.signal(signal.SIGINT, signal_handler)
