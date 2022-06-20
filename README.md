@@ -3,6 +3,13 @@
 ## Operazioni preliminari
 ---
 
+### utente e password
+
+```
+utente: wasser
+password: unter
+```
+
 ### abilitare ssh
 
 Procedura:
