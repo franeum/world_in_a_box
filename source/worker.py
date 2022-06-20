@@ -8,6 +8,7 @@ import RPi.GPIO as GPIO
 from pathlib import Path
 from gpiozero import Button
 from wab_video import Video
+import wab_bg as background
 
 # GLOBAL LABELS
 
@@ -38,13 +39,6 @@ def runvideo(push):
     VIDEO.play()
 
 
-def draw_bg():
-    root = tk.Tk()
-    root.configure(bg='black', cursor='none')
-    root.attributes('-fullscreen', True)
-    root.update()
-
-
 def togglevideo(push):
     VIDEO.toggle_pause()
 
@@ -64,7 +58,7 @@ if __name__ == '__main__':
     GPIO.add_event_detect(PUSH2, GPIO.RISING, 
                 callback=runvideo, bouncetime=400)
                 
-    draw_bg()
+    background.draw_bg()
     
     PUSH3PRESSED.when_released = togglevideo
     PUSH3PRESSED.when_held = app_exit
