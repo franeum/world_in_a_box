@@ -4,7 +4,6 @@ import re
 import sys
 import signal
 import tkinter as tk
-from types import NoneType
 import RPi.GPIO as GPIO
 from pathlib import Path
 from gpiozero import Button
