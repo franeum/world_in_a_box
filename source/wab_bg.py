@@ -14,6 +14,7 @@ def draw_bg():
         root.update()
         time.sleep(1)
         win.destroy()
+        root.update()
+        time.sleep(0.5)
 
-    time.sleep(1)
-    win.destroy()
+    root.update()
