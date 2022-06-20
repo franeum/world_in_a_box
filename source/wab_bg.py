@@ -22,7 +22,7 @@ def draw_bg():
         win['text'] = str(i)
         win.pack(ipadx=10, ipady=300)
         root.update()
-        time.sleep(0.75)
+        time.sleep(0.5)
 
     win.destroy()
     root.update()

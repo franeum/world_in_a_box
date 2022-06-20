@@ -22,6 +22,7 @@ PUSH3 = 2
 PUSH3PRESSED = Button(PUSH3, hold_time=1)
 VIDEO = Video()
 
+
 def signal_handler(sig, frame):
     GPIO.cleanup()
     sys.exit(0)
@@ -32,9 +33,8 @@ def runvideo(push):
     lang = VIDEOS[push - PUSH1]
     GPIO.setmode(GPIO.BCM)
 
-    for push in [PUSH1, PUSH2]:
-        GPIO.remove_event_detect(push)
-    
+    remove_event([PUSH1, PUSH2])
+
     VIDEO.set_path(lang)
     VIDEO.play()
 
@@ -47,19 +47,26 @@ def app_exit(push):
     sys.exit(0)
 
 
+def add_event(pushes):
+    for push in pushes:
+        GPIO.add_event_detect(push, GPIO.RISING,
+                              callback=runvideo, bouncetime=400)
+
+
+def remove_event(pushes):
+    for push in pushes:
+        GPIO.remove_event_detect(push)
+
+
 if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(PUSH1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(PUSH2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-    GPIO.add_event_detect(PUSH1, GPIO.RISING, 
-                callback=runvideo, bouncetime=400)
-                
-    GPIO.add_event_detect(PUSH2, GPIO.RISING, 
-                callback=runvideo, bouncetime=400)
-                
+    add_event([PUSH1, PUSH2])
+
     background.draw_bg()
-    
+
     PUSH3PRESSED.when_released = togglevideo
     PUSH3PRESSED.when_held = app_exit
 
