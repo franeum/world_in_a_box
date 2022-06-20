@@ -21,7 +21,6 @@ class Video():
         self.video.pause = False
         self.video.fullscreen = True
         self.video.play(self.path)
-        # self.video.wait_for_playback()
 
     def toggle_pause(self):
         self.video.pause = not self.video.pause
