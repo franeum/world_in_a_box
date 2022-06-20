@@ -38,6 +38,8 @@ def runvideo(push):
     VIDEO.set_path(lang)
     VIDEO.play()
 
+    add_event([PUSH1, PUSH2])
+
 
 def togglevideo(push):
     VIDEO.toggle_pause()
