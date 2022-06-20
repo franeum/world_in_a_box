@@ -33,7 +33,7 @@ def runvideo(push):
     lang = VIDEOS[push - PUSH1]
     GPIO.setmode(GPIO.BCM)
 
-    remove_event(PUSH1, PUSH2)
+    remove_event([PUSH1, PUSH2])
 
     VIDEO.set_path(lang)
     VIDEO.play()
@@ -47,13 +47,13 @@ def app_exit(push):
     sys.exit(0)
 
 
-def add_event(*pushes):
+def add_event(pushes):
     for push in pushes:
         GPIO.add_event_detect(push, GPIO.RISING,
                               callback=runvideo, bouncetime=400)
 
 
-def remove_event(*pushes):
+def remove_event(pushes):
     for push in pushes:
         GPIO.remove_event_detect(push)
 
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     GPIO.setup(PUSH1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(PUSH2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-    add_event(PUSH1, PUSH2)
+    add_event([PUSH1, PUSH2])
 
     background.draw_bg()
 
