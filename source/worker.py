@@ -13,7 +13,7 @@ import wab_bg as background
 # GLOBAL LABELS
 
 MAINPATH = Path(__file__).parent.absolute()
-VIDEO_DIR = (MAINPATH / '../data').resolve()
+VIDEO_DIR = (MAINPATH / '../VIDEO').resolve()
 PATTERN = re.compile(r'^[12]_')
 VIDEOS = [x for x in VIDEO_DIR.iterdir() if re.match(PATTERN, x.stem)]
 PUSH1 = 23
