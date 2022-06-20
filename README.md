@@ -1,23 +1,18 @@
 # world_in_a_box
 
-## wxPython
 
-install [wxPython](https://wiki.wxpython.org/How%20to%20install%20wxPython)
+## mpv
 
-probably you can use
+install mpv in the system:
 
 ```bash
-sudo apt install libgtk-3-dev
-pip3 install wheel
-pip3 install wxPython # long long time to install
+sudo apt install mpv libmpv-dev 
 ```
 
-## mplayer
-
-in `$HOME/.mplayer/config` add this line:
+install python library (version 0.5.2)
 
 ```bash
-lirc=no
+pip3 install python-mpv==0.5.2
 ```
 
 

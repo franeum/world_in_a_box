@@ -1,4 +1,3 @@
-import pathlib
 from mpv import MPV
 
 
@@ -8,6 +7,14 @@ class Video():
 
     def set_path(self, path):
         self.path = str(path)
+
+    def set_callback(self, callback, *args):
+        p = self.video
+
+        @p.event_callback('END_FILE')
+        def finefile(event):
+            if event['event_id'] == 7:
+                callback(args)
 
     def play(self):
         self.video.pause = False
