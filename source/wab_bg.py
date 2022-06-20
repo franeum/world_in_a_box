@@ -7,14 +7,14 @@ def draw_bg():
     root.configure(bg='black', cursor='none')
     root.attributes('-fullscreen', True)
     
-    for i in range(3,0,-1):
-        win = tk.Label(root, text=str(i), background="#000", foreground="#fff",
+    win = tk.Label(root, text="", background="#000", foreground="#fff",
             font=tkFont.Font(family='Helvetica', size=72, weight='bold'))
+
+    for i in range(3,0,-1):
+        win['text'] = str(i)
         win.pack(ipadx=10, ipady=300)
         root.update()
         time.sleep(1)
-        win.destroy()
-        root.update()
-        time.sleep(0.5)
 
+    win.destroy()
     root.update()
