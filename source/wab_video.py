@@ -14,6 +14,7 @@ class Video():
         @p.event_callback('END_FILE')
         def finefile(event):
             if event['event_id'] == 7:
+                print(args)
                 callback(args)
 
     def play(self):
