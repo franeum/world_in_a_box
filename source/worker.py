@@ -40,6 +40,7 @@ def runvideo(push):
 
 
 def togglevideo(push):
+    print("TOGGLE PAUSE")
     VIDEO.toggle_pause()
 
 
