@@ -19,6 +19,23 @@ Procedura:
 - scegliere la vode **Configurazione di Raspberry Pi**
 - Andare su **Interfacce** e abilitare la voce **ssh**
 
+### aggiornamento
+
+```bash
+sudo apt update
+sudo apt full-upgrade
+```
+
+### stress test
+
+```bash
+sudo apt install stress
+```
+
+```bash
+while true; do vcgencmd measure_clock arm; vcgencmd measure_temp; sleep 10; done& stress -c 4 -t 900s
+```
+
 ### audio
 
 Assicurarsi che l'uscita sia effettivamente **Headphone**:
