@@ -18,7 +18,7 @@ PATTERN = re.compile(r'^[12]_')
 VIDEOS = [x for x in VIDEO_DIR.iterdir() if re.match(PATTERN, x.stem)]
 PUSH1 = 23
 PUSH2 = 24
-PUSH3 = 2
+PUSH3 = 25
 PUSH3PRESSED = Button(PUSH3, hold_time=1)
 VIDEO = Video()
 
