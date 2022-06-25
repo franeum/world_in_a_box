@@ -10,6 +10,10 @@ utente: unter
 password: wasser
 ```
 
+### Localization
+
+andare su `icona raspberry/Raspberry Pi Configuration` e sul pannello *localization* configurare le impostazioni per l'Italia.
+
 ### abilitare ssh
 
 Procedura:
