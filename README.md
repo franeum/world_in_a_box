@@ -6,8 +6,8 @@
 ### utente e password
 
 ```
-utente: wasser
-password: unter
+utente: unter
+password: wasser
 ```
 
 ### abilitare ssh
