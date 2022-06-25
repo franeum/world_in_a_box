@@ -86,6 +86,8 @@ ed eseguire il seguente comando:
 ln -s ~/Documenti/world_in_a_box/VIDEO/ VIDEO
 ```
 
+*N.B. se il file system e' in versione inglese sostituire Documenti con DOcuments*
+
 ### installare mpv
 
 #### sistema
