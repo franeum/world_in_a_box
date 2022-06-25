@@ -90,7 +90,7 @@ pip3 install python-mpv==0.5.2
 
 ### Attivare wab all'avvio di raspi
 
-Copiare i file **wab_main.desktop** e **web_worker.desktop** nella cartella `/etc/xdg/autostart/`. 
+Copiare i file **wab_main.desktop** e **wab_worker.desktop** nella cartella `/etc/xdg/autostart/`. 
 Riavviare per verificare l'attivazione al *boot*
 
 ## Comportamento di WAB
