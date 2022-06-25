@@ -74,6 +74,14 @@ salva e riavvia.
 
 ### Creare un collegamento della cartella dei video sul Desktop 
 
+posizionarsi nella folder Desktop con:  
+
+```bash
+cd ~/Desktop
+``` 
+
+ed eseguire il seguente comando:  
+
 ```bash
 ln -s ~/Documenti/world_in_a_box/VIDEO/ VIDEO
 ```
