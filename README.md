@@ -88,6 +88,11 @@ sudo apt install mpv libmpv-dev
 pip3 install python-mpv==0.5.2
 ```
 
+### Attivare wab all'avvio di raspi
+
+Copiare i file **wab_main.desktop** e **web_worker.desktop** nella cartella `/etc/xdg/autostart/`. 
+Riavviare per verificare l'attivazione al *boot*
+
 ## Comportamento di WAB
 ---
 
@@ -123,6 +128,8 @@ Consiglio per portare i video su raspberry:
 - usare una chiavetta USB
 
 ## Accendere e spegnere raspi
+
+---
 
 Per accendere raspi è sufficiente alimentarla, quindi nel caso di un cavo dotato di interruttore, basta spostare la levetta per accenderlo. 
 
